@@ -882,7 +882,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     vndk-sp \
 
-TARGET_FS_CONFIG_GEN := device/qcom/qssi_au/config.fs
+TARGET_FS_CONFIG_GEN := device/qcom/qssi_au_64/config.fs
 
 ifeq ($(TARGET_HAS_LOW_RAM),true)
     PRODUCT_PROPERTY_OVERRIDES += \

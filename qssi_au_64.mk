@@ -2,9 +2,9 @@
 #we build so there is no confusion.
 
 TARGET_BOARD_PLATFORM := qssi
-TARGET_BOOTLOADER_BOARD_NAME := qssi_au
+TARGET_BOOTLOADER_BOARD_NAME := qssi_au_64
 TARGET_BOARD_TYPE := auto
-TARGET_BOARD_SUFFIX := _au
+TARGET_BOARD_SUFFIX := _au_64
 
 TARGET_BOARD_AUTO := true
 TARGET_NO_TELEPHONY := true
@@ -92,8 +92,8 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/google/av \
     hardware/google/interfaces
 
-VENDOR_QTI_PLATFORM := qssi_au
-VENDOR_QTI_DEVICE := qssi_au
+VENDOR_QTI_PLATFORM := qssi_au_64
+VENDOR_QTI_DEVICE := qssi_au_64
 
 #QSSI configuration
 #Single system image project structure
@@ -107,7 +107,7 @@ endif
 ENABLE_AB ?= true
 
 TARGET_DEFINES_DALVIK_HEAP := true
-$(call inherit-product, device/qcom/qssi_au/common64.mk)
+$(call inherit-product, device/qcom/qssi_au_64/common64.mk)
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
 
 #Inherit all except heap growth limit from phone-xhdpi-2048-dalvik-heap.mk
@@ -149,7 +149,7 @@ endif
 
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := false
 
-TARGET_SYSTEM_PROP += device/qcom/qssi_au/system.prop
+TARGET_SYSTEM_PROP += device/qcom/qssi_au_64/system.prop
 
 TARGET_DISABLE_DASH := true
 TARGET_DISABLE_QTI_VPP := true
@@ -196,7 +196,7 @@ PRODUCT_PACKAGES += \
     android.hardware.health@1.0-service \
     libhealthd.msm
 
-DEVICE_FRAMEWORK_MANIFEST_FILE := device/qcom/qssi_au/framework_manifest.xml
+DEVICE_FRAMEWORK_MANIFEST_FILE := device/qcom/qssi_au_64/framework_manifest.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := vendor/qcom/opensource/core-utils/vendor_framework_compatibility_matrix.xml
 
 PRODUCT_PRODUCT_PROPERTIES += persist.adb.tcp.port=5555
@@ -284,13 +284,13 @@ KERNEL_MODULES_OUT := out/target/product/$(PRODUCT_NAME)/$(KERNEL_MODULES_INSTAL
 
 ifneq ($(strip $(TARGET_BUILD_VARIANT)),user)
 PRODUCT_COPY_FILES += \
-    device/qcom/qssi_au/init.qcom.testscripts.sh:$(TARGET_COPY_OUT_PRODUCT)/etc/init.qcom.testscripts.sh \
-    device/qcom/qssi_au/init.qcom.testscripts.sh:$(TARGET_COPY_OUT_SYSTEM)/etc/init.qcom.testscripts.sh
+    device/qcom/qssi_au_64/init.qcom.testscripts.sh:$(TARGET_COPY_OUT_PRODUCT)/etc/init.qcom.testscripts.sh \
+    device/qcom/qssi_au_64/init.qcom.testscripts.sh:$(TARGET_COPY_OUT_SYSTEM)/etc/init.qcom.testscripts.sh
 endif
 
 # copy system_ext specific whitelisted libraries to system_ext/etc
 PRODUCT_COPY_FILES += \
-    device/qcom/qssi_au/public.libraries.system_ext-qti.txt:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/public.libraries-qti.txt
+    device/qcom/qssi_au_64/public.libraries.system_ext-qti.txt:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/public.libraries-qti.txt
 
 #Enable full treble flag
 PRODUCT_FULL_TREBLE_OVERRIDE := true
@@ -298,7 +298,7 @@ PRODUCT_VENDOR_MOVE_ENABLED := true
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 
 ifneq ($(strip $(TARGET_USES_RRO)),true)
-DEVICE_PACKAGE_OVERLAYS += device/qcom/qssi_au/overlay
+DEVICE_PACKAGE_OVERLAYS += device/qcom/qssi_au_64/overlay
 endif
 
 #Enable vndk-sp Libraries
@@ -329,7 +329,7 @@ endif
 
 # Include mainline components and QSSI whitelist
 ifeq (true,$(call math_gt_or_eq,$(SHIPPING_API_LEVEL),29))
-  $(call inherit-product, device/qcom/qssi_au/qssi_au_whitelist.mk)
+  $(call inherit-product, device/qcom/qssi_au_64/qssi_au_64_whitelist.mk)
   PRODUCT_ARTIFACT_PATH_REQUIREMENT_IGNORE_PATHS := /system/system_ext/
   PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := true
 endif
