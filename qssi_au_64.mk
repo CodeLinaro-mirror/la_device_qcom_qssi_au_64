@@ -100,10 +100,9 @@ VENDOR_QTI_DEVICE := qssi_au_64
 TARGET_USES_QSSI := true
 
 TARGET_USES_NEW_ION := true
-#TODO(amutyala) to revert this once QSSI 15 component created
-ifeq (,$(filter VanillaIceCream V 35, $(PLATFORM_VNDK_VERSION)))
-TARGET_USES_GAS := true
-endif
+
+TARGET_USES_GAS := false
+
 ENABLE_AB ?= true
 
 TARGET_DEFINES_DALVIK_HEAP := true
