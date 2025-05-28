@@ -335,6 +335,9 @@ endif
 
 PRODUCT_PACKAGES += vendor.qti.qesdsys
 
+PRODUCT_PACKAGES += eth_cli.sh \
+                    link_monitor.sh \
+
 PRODUCT_PACKAGES += network_config_default
 
 PRODUCT_COPY_FILES += \
