@@ -101,7 +101,7 @@ TARGET_USES_QSSI := true
 
 TARGET_USES_NEW_ION := true
 
-TARGET_USES_GAS := false
+TARGET_USES_GAS := true
 
 ENABLE_AB ?= true
 
