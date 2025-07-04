@@ -101,7 +101,7 @@ TARGET_USES_QSSI := true
 
 TARGET_USES_NEW_ION := true
 
-TARGET_USES_GAS := false
+TARGET_USES_GAS := true
 
 ENABLE_AB ?= true
 
@@ -219,18 +219,10 @@ PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-service_64
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml
 
-#To Maintain Vendors which has both 32-bit and 64-bit Enabled
-PRODUCT_COPY_FILES += \
-    system/core/rootdir/init.zygote64_32.rc:system/etc/init/hw/init.zygote64_32.rc
-
 # Context hub HAL
 PRODUCT_PACKAGES += \
     android.hardware.contexthub@1.0-impl.generic \
     android.hardware.contexthub@1.0-service
-
-# system prop for enabling QFS (QTI Fingerprint Solution)
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.qfp=true
 
 PRODUCT_SYSTEM_PROPERTIES += \
     persist.device_config.runtime_native_boot.iorap_perfetto_enable=true
@@ -334,6 +326,9 @@ ifeq (true,$(call math_gt_or_eq,$(SHIPPING_API_LEVEL),29))
 endif
 
 PRODUCT_PACKAGES += vendor.qti.qesdsys
+
+PRODUCT_PACKAGES += eth_cli.sh \
+                    link_monitor.sh \
 
 PRODUCT_PACKAGES += network_config_default
 
