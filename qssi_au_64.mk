@@ -101,7 +101,13 @@ TARGET_USES_QSSI := true
 
 TARGET_USES_NEW_ION := true
 
-TARGET_USES_GAS := false
+TARGET_USES_GAS := true
+
+ifeq ($(strip $(TARGET_BUILD_VARIANT)),user)
+ifeq ($(TARGET_USES_GAS),true)
+   PRODUCT_SYSTEM_PROPERTIES += ro.android.car.restrictbytos=true
+endif
+endif
 
 ENABLE_AB ?= true
 
