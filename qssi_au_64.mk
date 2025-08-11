@@ -343,6 +343,10 @@ endif
 
 PRODUCT_PACKAGES += vendor.qti.qesdsys
 
+PRODUCT_PACKAGES += eth_cli.sh \
+                    link_monitor.sh \
+
+
 # Enable support for APEX updates
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
