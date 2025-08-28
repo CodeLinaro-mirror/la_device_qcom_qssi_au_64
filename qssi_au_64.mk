@@ -14,16 +14,6 @@ DEVICE_SUPPORTS_64_BIT_APPS_ONLY := true
 # Skip VINTF checks for kernel configs since we do not have kernel source
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 
-#Enable product partition Native I/F. It is automatically set to current if
-#the shipping API level for the target is greater than 29
-PRODUCT_PRODUCT_VNDK_VERSION := current
-#TODO(amutyala) to revert once QSSI 15 component created
-#This change requires to build super image (QSSI15 + V14)
-ifeq (,$(filter VanillaIceCream V 35, $(PLATFORM_VNDK_VERSION)))
-PRODUCT_EXTRA_VNDK_VERSIONS := 32 33
-else
-PRODUCT_EXTRA_VNDK_VERSIONS := 33 34
-endif
 RELAX_USES_LIBRARY_CHECK := true
 
 #Enable product partition Java I/F. It is automatically set to true if
@@ -308,11 +298,7 @@ endif
 
 PRODUCT_PACKAGES += android.frameworks.automotive.display@1.0-service
 
-#Enable vndk-sp Libraries
-PRODUCT_PACKAGES += vndk_package
-
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE:=true
-
 
 TARGET_MOUNT_POINTS_SYMLINKS := false
 
