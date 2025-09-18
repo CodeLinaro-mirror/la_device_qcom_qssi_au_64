@@ -103,7 +103,11 @@ ENABLE_AB ?= true
 
 TARGET_DEFINES_DALVIK_HEAP := true
 $(call inherit-product, device/qcom/qssi_au_64/common64.mk)
-$(call inherit-product, packages/services/Car/car_product/build/car.mk)
+$(call inherit-product, device/qcom/qssi_au_64/qssi_au_64_system_generic.mk)
+$(call inherit-product, packages/services/Car/car_product/build/car_generic_system.mk)
+$(call inherit-product, packages/services/Car/car_product/build/car_system_ext.mk)
+$(call inherit-product, packages/services/Car/car_product/build/car_product.mk)
+#$(call inherit-product, packages/services/Car/car_product/build/car.mk)
 
 #Inherit all except heap growth limit from phone-xhdpi-2048-dalvik-heap.mk
 PRODUCT_PROPERTY_OVERRIDES  += \
@@ -314,8 +318,8 @@ PRODUCT_VIRTUAL_AB_COMPRESSION_METHOD := lz4
 
 # Include mainline components and QSSI whitelist
 ifeq (true,$(call math_gt_or_eq,$(SHIPPING_API_LEVEL),29))
-  $(call inherit-product, device/qcom/qssi_au_64/qssi_au_64_whitelist.mk)
-  PRODUCT_ARTIFACT_PATH_REQUIREMENT_IGNORE_PATHS := /system/system_ext/
+  #$(call inherit-product, device/qcom/qssi_au_64/qssi_au_64_whitelist.mk)
+  #PRODUCT_ARTIFACT_PATH_REQUIREMENT_IGNORE_PATHS := /system/system_ext/
   PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := true
 endif
 
