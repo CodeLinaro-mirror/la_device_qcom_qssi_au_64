@@ -324,10 +324,7 @@ PRODUCT_PACKAGES += vendor.qti.qesdsys
 PRODUCT_PACKAGES += eth_cli.sh \
                     link_monitor.sh \
 
-PRODUCT_PACKAGES += network_config_default
-
-PRODUCT_COPY_FILES += \
-    vendor/qcom/proprietary/commonsys/cne/automs_vlan/network_config_default.sh:$(TARGET_COPY_OUT_SYSTEM_EXT)/bin/network_config_default.sh
+PRODUCT_PACKAGES += network_config_default.sh
 
 # Enable support for APEX updates
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
