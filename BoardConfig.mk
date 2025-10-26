@@ -24,6 +24,9 @@ TARGET_KERNEL_DLKM_DISABLE := true
 
 -include $(QCPATH)/common/msmnile_au/BoardConfigVendor.mk
 
+# Enable the new fingerprint format
+BOARD_USE_VBMETA_DIGTEST_IN_FINGERPRINT := true
+
 USE_OPENGL_RENDERER := true
 BOARD_USE_LEGACY_UI := true
 
