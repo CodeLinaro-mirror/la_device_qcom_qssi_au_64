@@ -229,6 +229,9 @@ PRODUCT_SYSTEM_PROPERTIES += \
 
 PRODUCT_SYSTEM_PROPERTIES += ro.android.car.audio.enableaudiopatch=true
 
+#Simulate sdcard on /data/media
+PRODUCT_SYSTEM_PROPERTIES += persist.fuse_sdcard=true
+
 # USB default HAL
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service
