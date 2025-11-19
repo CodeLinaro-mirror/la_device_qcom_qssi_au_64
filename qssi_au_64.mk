@@ -323,7 +323,7 @@ PRODUCT_VIRTUAL_AB_COMPRESSION_METHOD := lz4
 ifeq (true,$(call math_gt_or_eq,$(SHIPPING_API_LEVEL),29))
   #$(call inherit-product, device/qcom/qssi_au_64/qssi_au_64_whitelist.mk)
   #PRODUCT_ARTIFACT_PATH_REQUIREMENT_IGNORE_PATHS := /system/system_ext/
-  PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := true
+  PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := false
 endif
 
 PRODUCT_PACKAGES += vendor.qti.qesdsys
