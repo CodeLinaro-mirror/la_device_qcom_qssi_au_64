@@ -340,6 +340,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 # # Some CTS test case failed after enabling feature config_stopSystemPackagesByDefault
 PRODUCT_PACKAGES += initial-package-stopped-states-aosp.xml
 
+# Enable Car Telemetry
+ENABLE_CARTELEMETRY_SERVICE := true
+PRODUCT_PACKAGES += android.automotive.telemetryd@1.0
+PRODUCT_PACKAGES += ScriptExecutor
+
 ###################################################################################
 # This is the End of target.mk file.
 # Now, Pickup other split product.mk files:
