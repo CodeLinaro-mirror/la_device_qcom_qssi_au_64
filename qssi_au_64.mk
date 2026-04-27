@@ -231,6 +231,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_SYSTEM_PROPERTIES += \
     persist.device_config.runtime_native_boot.iorap_perfetto_enable=true
 
+PRODUCT_SYSTEM_PROPERTIES += \
+    ro.lmk.enhance_batch_kill=true \
+    ro.lmk.enable_adaptive_lmk=true \
+    ro.lmk.vmpressure_file_min=80640
+
 PRODUCT_SYSTEM_PROPERTIES += ro.android.car.audio.enableaudiopatch=true
 
 #Simulate sdcard on /data/media
