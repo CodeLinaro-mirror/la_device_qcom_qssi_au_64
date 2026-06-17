@@ -3,6 +3,9 @@
 
 TARGET_BOARD_PLATFORM := qssi
 TARGET_BOOTLOADER_BOARD_NAME := qssi_au_64
+
+# Scalable UI (DEWD) enable flag. Set to false to disable all Scalable UI changes.
+TARGET_SCALABLE_UI_ENABLE ?= true
 TARGET_BOARD_TYPE := auto
 TARGET_BOARD_SUFFIX := _au_64
 
@@ -108,6 +111,26 @@ $(call inherit-product, packages/services/Car/car_product/build/car_generic_syst
 $(call inherit-product, packages/services/Car/car_product/build/car_system_ext.mk)
 $(call inherit-product, packages/services/Car/car_product/build/car_product.mk)
 #$(call inherit-product, packages/services/Car/car_product/build/car.mk)
+
+ifeq ($(TARGET_SCALABLE_UI_ENABLE),true)
+# Enable Scalable UI (DEWD) for landscape automotive target.
+# car_dewd_landscape_common.mk adds landscape DEWD packages to product partition.
+# rro/rro.mk adds CarSystemUIDewdUIRRO (com.android.systemui.rro.dewd) to
+# system_ext partition - this sets config_enableScalableUI=true in CarSystemUI.
+$(call inherit-product, packages/services/Car/car_product/dewd/car_dewd_landscape_common.mk)
+$(call inherit-product, packages/services/Car/car_product/dewd/rro/rro.mk)
+# Enable user aspect ratio settings for DisplayCompat (Aspect Ratio Settings button).
+# This allows users to change the aspect ratio of non-resizeable apps on landscape displays.
+PRODUCT_SYSTEM_PROPERTIES += \
+    persist.device_config.window_manager.enable_app_compat_aspect_ratio_user_settings=true
+# DEWD layout config for this device.
+# car.dewd.config.qcom activates the matching RRO:
+#   threepanel → DewdThreePanelQcomRRO (3-panel landscape layout)
+#   splitview  → DewdSplitViewQcomRRO  (map + app split layout)
+# Only ONE mk file should set this property — Android does not support overrides
+# for PRODUCT_PRODUCT_PROPERTIES (duplicate keys cause build errors).
+PRODUCT_PRODUCT_PROPERTIES += car.dewd.config.qcom=splitview
+endif # TARGET_SCALABLE_UI_ENABLE
 
 #Inherit all except heap growth limit from phone-xhdpi-2048-dalvik-heap.mk
 PRODUCT_PROPERTY_OVERRIDES  += \
