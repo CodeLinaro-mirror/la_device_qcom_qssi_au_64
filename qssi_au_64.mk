@@ -45,7 +45,7 @@ BOARD_HAVE_QCOM_FM := false
 
 # Retain the earlier default behavior i.e. ota config (dynamic partition was disabled if not set explicitly), so set
 # SHIPPING_API_LEVEL to 28 if it was not set earlier (this is generally set earlier via build.sh per-target)
-SHIPPING_API_LEVEL := 36
+SHIPPING_API_LEVEL := 37
 
 $(call inherit-product-if-exists, vendor/qcom/defs/product-defs/system/cne_url*.mk)
 
@@ -64,7 +64,7 @@ PRODUCT_BUILD_PRODUCT_IMAGE := false
 else
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 # Disable building the SUPER partition in this build. SUPER should be built
-# after QSSI has been merged with the SoC build.
+# after QSSI_AU_64 has been merged with the SoC build.
 PRODUCT_BUILD_SYSTEM_EXT_IMAGE := true
 PRODUCT_BUILD_PRODUCT_IMAGE := true
 PRODUCT_BUILD_SUPER_PARTITION := false
@@ -85,7 +85,7 @@ PRODUCT_SOONG_NAMESPACES += \
 VENDOR_QTI_PLATFORM := qssi_au_64
 VENDOR_QTI_DEVICE := qssi_au_64
 
-#QSSI configuration
+#QSSI_AU_64 configuration
 #Single system image project structure
 TARGET_USES_QSSI := true
 
