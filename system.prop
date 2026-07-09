@@ -134,8 +134,6 @@ ro.hwui.text_small_cache_height=1024
 ro.hwui.text_large_cache_width=2048
 ro.hwui.text_large_cache_height=1024
 
-config.disable_rtt=true
-
 #Bringup properties
 persist.sys.force_sw_gles=1
 persist.vendor.radio.atfwd.start=true
@@ -147,13 +145,6 @@ ro.vendor.qti.sys.fw.bg_apps_limit=60
 
 #Enable ZRAM
 ro.vendor.qti.config.zram=true
-
-#IOP properties
-vendor.iop.enable_uxe=1
-vendor.perf.iop_v3.enable=true
-
-#Property to enable perf boosts from System Server
-vendor.perf.gestureflingboost.enable=true
 
 #Enable ULMK properties
 ro.lmk.kill_heaviest_task=true
@@ -179,8 +170,6 @@ vendor.display.virtual_baseid_and_size=8,1
 # Enable car power manager for LPM(LowPowerMode)
 persist.vendor.car.lpm=true
 
-# set BT AVRCP prop to false
-persist.bluetooth.enablenewavrcp=false
 #disable Telephony
 ro.radio.noril=true
 
