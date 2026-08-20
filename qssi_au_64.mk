@@ -208,8 +208,10 @@ PRODUCT_PACKAGES += update_engine \
     android.hardware.boot@1.0-impl \
     android.hardware.boot@1.0-service
 
+ifeq (cp2a, $(filter cp2a, $(TARGET_RELEASE_PLATFORM)))
 PRODUCT_HOST_PACKAGES += \
     brillo_update_payload
+endif
 
 #Boot control HAL test app
 PRODUCT_PACKAGES_DEBUG += bootctl
