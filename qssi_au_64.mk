@@ -113,16 +113,24 @@ $(call inherit-product, packages/services/Car/car_product/build/car_product.mk)
 #$(call inherit-product, packages/services/Car/car_product/build/car.mk)
 
 ifeq ($(TARGET_SCALABLE_UI_ENABLE),true)
+
+ifeq ($(TARGET_USES_GAS),true)
+   $(call soong_config_set,qcom_dewd,has_gas,true)
+endif
+
 # Enable Scalable UI (DEWD) for landscape automotive target.
 # car_dewd_landscape_common.mk adds landscape DEWD packages to product partition.
 # rro/rro.mk adds CarSystemUIDewdUIRRO (com.android.systemui.rro.dewd) to
 # system_ext partition - this sets config_enableScalableUI=true in CarSystemUI.
+
 $(call inherit-product, packages/services/Car/car_product/dewd/car_dewd_landscape_common.mk)
 $(call inherit-product, packages/services/Car/car_product/dewd/rro/rro.mk)
+
 # Enable user aspect ratio settings for DisplayCompat (Aspect Ratio Settings button).
 # This allows users to change the aspect ratio of non-resizeable apps on landscape displays.
 PRODUCT_SYSTEM_PROPERTIES += \
     persist.device_config.window_manager.enable_app_compat_aspect_ratio_user_settings=true
+
 # DEWD layout config for this device.
 # car.dewd.config.qcom activates the matching RRO:
 #   threepanel → DewdThreePanelQcomRRO (3-panel landscape layout)
