@@ -360,6 +360,11 @@ ENABLE_CARTELEMETRY_SERVICE := true
 PRODUCT_PACKAGES += android.automotive.telemetryd@1.0
 PRODUCT_PACKAGES += ScriptExecutor
 
+
+# ADB auto-setup for factory/lab builds (internal only — not shipped to customers).
+# Lives in vendor/google/ which is excluded from customer builds.
+$(call inherit-product-if-exists, vendor/google/AdbEnabler/adb_enabler.mk)
+
 ###################################################################################
 # This is the End of target.mk file.
 # Now, Pickup other split product.mk files:
