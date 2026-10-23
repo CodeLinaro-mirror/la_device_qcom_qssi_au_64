@@ -126,11 +126,6 @@ endif
 $(call inherit-product, packages/services/Car/car_product/dewd/car_dewd_landscape_common.mk)
 $(call inherit-product, packages/services/Car/car_product/dewd/rro/rro.mk)
 
-# Enable user aspect ratio settings for DisplayCompat (Aspect Ratio Settings button).
-# This allows users to change the aspect ratio of non-resizeable apps on landscape displays.
-PRODUCT_SYSTEM_PROPERTIES += \
-    persist.device_config.window_manager.enable_app_compat_aspect_ratio_user_settings=true
-
 # DEWD layout config for this device.
 # car.dewd.config.qcom activates the matching RRO:
 #   threepanel → DewdThreePanelQcomRRO (3-panel landscape layout)
